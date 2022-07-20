@@ -1,0 +1,27 @@
+<div class="container">
+    <app-search></app-search>
+    <div>
+        <table class="table table-hover" [cellPadding]="0">
+            <thead>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th></th>
+            </thead>
+            <tbody *ngIf="notes.length">
+                <tr *ngFor="let note of notes">
+                    <td [width]="50">
+                        <img src="{{imageDirectory}}{{note?.image}}" height="50" width="50">
+                    </td>
+                    <td [width]="200">{{note?.title || 'No Title'}}</td>
+                    <td [width]="1000">{{note?.description || 'No Description'}}</td>
+                    <td><button class="btn btn-outline-warning btn-sm" routerLink="/edit/{{ note.id }}">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger btn-sm" (click)="deleteNote(note.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
